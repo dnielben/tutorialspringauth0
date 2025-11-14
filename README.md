@@ -2,7 +2,7 @@
 
 A comprehensive tutorial on implementing OAuth2 authentication and authorization in a Spring Boot application using Auth0 as the identity provider.
 
-## 📚 Table of Contents
+## Table of Contents
 
 1. [Overview](#overview)
 2. [Prerequisites](#prerequisites)
@@ -18,7 +18,7 @@ A comprehensive tutorial on implementing OAuth2 authentication and authorization
 
 ---
 
-## 📖 Overview
+## Overview
 
 This tutorial demonstrates how to secure a Spring Boot web application using **OAuth 2.0** and **OpenID Connect (OIDC)** with **Auth0** as the authentication provider. Students will learn how to implement user login, logout, and profile display in a modern enterprise application.
 
@@ -32,7 +32,7 @@ This tutorial demonstrates how to secure a Spring Boot web application using **O
 
 ---
 
-## 🎓 Prerequisites
+## Prerequisites
 
 ### Required Knowledge
 - Basic Java programming (Java 17+)
@@ -49,7 +49,7 @@ This tutorial demonstrates how to secure a Spring Boot web application using **O
 
 ---
 
-## 🎯 Learning Objectives
+## Learning Objectives
 
 By the end of this tutorial, students will be able to:
 
@@ -203,7 +203,7 @@ server:
 
 ---
 
-## 📝 Step-by-Step Tutorial
+## Step-by-Step Tutorial
 
 ### Step 1: Understanding Dependencies
 
@@ -407,7 +407,7 @@ public class HomeController {
 
 ---
 
-## 🧪 Testing the Application
+## Testing the Application
 
 ### Build and Run
 
@@ -464,7 +464,7 @@ Started Securetutorialauth0 in X.XXX seconds
 
 ---
 
-## 🔐 Security Concepts Explained
+## Security Concepts Explained
 
 ### OAuth 2.0 vs OpenID Connect
 
@@ -530,7 +530,7 @@ Each filter performs a specific security task.
 
 ---
 
-## 🐛 Troubleshooting
+## Troubleshooting
 
 ### Problem 1: "Invalid redirect_uri"
 
@@ -593,7 +593,7 @@ server:
 
 ---
 
-## 🎨 Further Improvements
+## Further Improvements
 
 ### Level 1: Beginner Enhancements
 
@@ -657,7 +657,7 @@ server:
 
 ---
 
-## 📚 Additional Resources
+## Additional Resources
 
 ### Documentation
 - [Spring Security Reference](https://docs.spring.io/spring-security/reference/)

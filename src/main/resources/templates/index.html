@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<!-- src/main/resources/templates/index.html -->
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+    <body>
+        <a href="http://localhost:3000/oauth2/authorization/okta">Login</a>
+        <div sec:authorize="isAuthenticated()">
+            <p>You are logged in!</p>
+            <form name="logoutForm" th:action="@{/logout}" method="post">
+                <button type="submit" value="Log out"/>
+            </form>
+        </div>
+        <div sec:authorize="isAuthenticated()">
+            <Frame><img th:src="${profile.get('picture')}" th:attr="alt=${profile.get('name')}"/></Frame>
+            <h2 th:text="${profile.get('name')}"></h2>
+            <p th:text="${profile.get('email')}"></p>
+            <a th:href="@{/logout}">Log Out</a>
+        </div>
+    </body>
+</html>

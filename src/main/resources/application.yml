@@ -1,0 +1,12 @@
+# src/main/resources/application.yml
+okta:
+  oauth2:
+    issuer: https://dnielben.auth0.com/
+    client-id: IcdoRRTpeOmNjmP2dnpoPia0bCkDGyxF
+    client-secret: kPok5MzWDFL4nf6KxnE5dO577Z0ETPD1u2pr75-0ud6nDLFpAvngwErez7QiqKIk
+
+# The sample and instructions above for the callback and logout URL configuration use port 3000.
+# If you wish to use a different port, change this and be sure your callback and logout URLs are
+# configured with the correct port.
+server:
+  port: 3000

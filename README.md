@@ -63,7 +63,7 @@ By the end of this tutorial, students will be able to:
 
 ---
 
-## 🏗️ Architecture
+## Architecture
 
 ### Authentication Flow
 

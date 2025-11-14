@@ -115,7 +115,7 @@ By the end of this tutorial, students will be able to:
 
 ---
 
-## 🚀 Setup Instructions
+## Setup Instructions
 
 ### Step 1: Configure Auth0
 

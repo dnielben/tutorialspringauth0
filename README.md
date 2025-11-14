@@ -407,6 +407,60 @@ public class HomeController {
 
 ---
 
+## Understanding the Code
+
+This section explains how each part of the application works together.
+
+### 1. Dependency Configuration (`pom.xml`)
+Key starters provide:
+- `okta-spring-boot-starter`: Auto-configures OAuth2/OIDC client, mapping Auth0 (treated as Okta-compatible) settings from `application.yml`.
+- `spring-boot-starter-oauth2-client`: Handles authorization code flow, token exchange, session management.
+- `spring-boot-starter-web`: MVC + embedded Tomcat for HTTP endpoints.
+- `spring-boot-starter-thymeleaf`: Server-side rendering of HTML templates.
+- `thymeleaf-extras-springsecurity6`: Security tags (e.g. `sec:authorize`).
+
+### 2. Configuration (`application.yml`)
+Auth0 tenant values (`issuer`, `client-id`, `client-secret`) drive OAuth discovery (well-known endpoints). The `issuer` must end with a trailing slash. Port 3000 sets the base URL used in redirects and logout.
+
+### 3. Application Entry Point (`Securetutorialauth0.java`)
+Bootstraps Spring context. Component scanning finds the controller and security config. No custom logic—kept minimal for clarity.
+
+### 4. Security Pipeline (`SecurityConfig`)
+- `authorizeHttpRequests`: Public root path `/`; all other routes require authentication.
+- `oauth2Login(withDefaults())`: Enables authorization code flow; Spring builds the redirect URL and handles token exchange.
+- Custom logout handler: Performs federated logout by redirecting to Auth0's `/v2/logout` endpoint including `client_id` and `returnTo` (post-logout redirect).
+- Session: After successful login, an `OidcUser` is stored in the security context.
+
+### 5. Controller (`HomeController`)
+Single mapping for `/`. If authenticated, exposes OIDC claims (`name`, `email`, `picture`) to the view via `model.addAttribute("profile", principal.getClaims())`.
+
+### 6. View Template (`index.html`)
+Uses Thymeleaf + Spring Security dialect:
+- `sec:authorize="isAuthenticated()"` conditionally shows protected blocks.
+- Renders profile attributes directly from the `profile` map. Avoids client-side JavaScript for simplicity (server-side rendered secure content).
+- Logout uses POST form (recommended) though an anchor to `/logout` also works because Spring generates a CSRF token unless disabled.
+
+### 7. Authentication Lifecycle
+1. Unauthenticated user requests protected resource → redirected to Auth0.
+2. User authenticates at Auth0 → redirected back with authorization code.
+3. Spring exchanges code for ID & access tokens via OAuth2 client.
+4. `OidcUser` constructed from ID token; placed in security context.
+5. Subsequent requests reuse session; controller reads `OidcUser`.
+6. Logout triggers session invalidation locally + remote Auth0 logout.
+
+### 8. OIDC Claims Usage
+Only minimal claims are used (name, email, picture). Additional roles/permissions could be added via custom claims in Auth0 and inspected from `principal.getClaims()`.
+
+### 9. Extensibility Points
+- Add API endpoints: annotate with `@RestController` and secure with scopes.
+- Role-based access: map Auth0 roles into authorities via a custom `OidcUserService`.
+- Token propagation: access token available in `OAuth2AuthorizedClient` for downstream API calls.
+
+### 10. Security Considerations
+- Secrets: Move `client-secret` to environment variables for production (`SPRING_APPLICATION_JSON`, or a secrets manager).
+- HTTPS: Use TLS in real deployments; Auth0 callbacks must use HTTPS except for localhost.
+- CSRF: Default enabled for form logout; if adding state-changing REST endpoints for browser clients, keep CSRF protection.
+
 ## Testing the Application
 
 ### Build and Run

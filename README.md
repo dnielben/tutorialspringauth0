@@ -53,13 +53,13 @@ This tutorial demonstrates how to secure a Spring Boot web application using **O
 
 By the end of this tutorial, students will be able to:
 
-1. ✅ Understand OAuth 2.0 and OpenID Connect protocols
-2. ✅ Configure Auth0 as an identity provider
-3. ✅ Integrate Spring Security with OAuth2
-4. ✅ Implement secure login and logout flows
-5. ✅ Access and display user profile information
-6. ✅ Secure application endpoints
-7. ✅ Handle authentication states in web applications
+1. Understand OAuth 2.0 and OpenID Connect protocols
+2. Configure Auth0 as an identity provider
+3. Integrate Spring Security with OAuth2
+4. Implement secure login and logout flows
+5. Access and display user profile information
+6. Secure application endpoints
+7. Handle authentication states in web applications
 
 ---
 
@@ -196,7 +196,7 @@ server:
   port: 3000
 ```
 
-⚠️ **IMPORTANT**: Replace the placeholders with your actual Auth0 credentials:
+**IMPORTANT**: Replace the placeholders with your actual Auth0 credentials:
 - `YOUR-DOMAIN`: Your Auth0 domain (without `https://`)
 - `YOUR-CLIENT-ID`: Client ID from Auth0 application
 - `YOUR-CLIENT-SECRET`: Client Secret from Auth0 application
@@ -445,9 +445,9 @@ Started Securetutorialauth0 in X.XXX seconds
 
 #### Test 3: View Profile Information
 1. After login, observe:
-   - ✅ Profile picture displayed
-   - ✅ Full name displayed
-   - ✅ Email address displayed
+    - Profile picture displayed
+    - Full name displayed
+    - Email address displayed
 2. **Reason**: OIDC claims from Auth0 ID token
 
 #### Test 4: Logout
@@ -676,7 +676,7 @@ server:
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
 Students are encouraged to:
 - Report issues or bugs
@@ -686,13 +686,13 @@ Students are encouraged to:
 
 ---
 
-## 📄 License
+## License
 
 This tutorial is provided for educational purposes.
 
 ---
 
-## 🎓 Assessment Criteria
+## Assessment Criteria
 
 Students will be evaluated on:
 
@@ -713,7 +713,7 @@ Students will be evaluated on:
 
 ---
 
-## ✅ Checklist for Students
+## Checklist for Students
 
 - [ ] Auth0 account created
 - [ ] Auth0 application configured
@@ -729,4 +729,4 @@ Students will be evaluated on:
 
 ---
 
-**Happy Learning! 🚀**
+**Happy Learning!**
